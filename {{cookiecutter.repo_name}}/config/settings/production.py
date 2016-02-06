@@ -4,7 +4,6 @@
 Production settings
 - Run in production mode
 - Use Amazon's S3 for storing static files
-
 """
 
 # DEBUG
