@@ -59,4 +59,5 @@ docs/_build/
 target/
 
 #Ipython Notebook
-.ipynb_checkpoints
+.ipynb_checkpoint
+.DS_store
