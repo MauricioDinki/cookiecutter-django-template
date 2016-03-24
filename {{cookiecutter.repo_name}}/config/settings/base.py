@@ -71,12 +71,6 @@ FIXTURE_DIRS = (
     str(PROJECT_DIR.path('fixtures')),
 )
 
-# MANAGER CONFIGURATION
-# -----------------------------------------------------------------------------
-ADMINS = (
-    ("""{{cookiecutter.author_name}}""", '{{cookiecutter.email}}'),
-)
-
 # GENERAL CONFIGURATION
 # -----------------------------------------------------------------------------
 TIME_ZONE = 'America/Mexico_City'
