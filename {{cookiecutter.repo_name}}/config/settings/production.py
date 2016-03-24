@@ -6,6 +6,8 @@ Production settings
 - Use Amazon's S3 for storing static files
 """
 
+from .base import *
+
 # DEBUG
 # -----------------------------------------------------------------------------
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
@@ -23,16 +25,13 @@ ALLOWED_HOSTS = ["*"]
 # -----------------------------------------------------------------------------
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC',
         'NAME': '{{cookiecutter.project_name}}',
         'USER': 'root',
         'PASSWORD': '{{cookiecutter.project_name}}',
         'HOST': '',
-        'OPTIONS': {
-            'read_default_file': '/path/to/my.cnf',
-            "init_command": "SET foreign_key_checks = 0;",
-        },
+        'PORT': '',
     }
 }
 
