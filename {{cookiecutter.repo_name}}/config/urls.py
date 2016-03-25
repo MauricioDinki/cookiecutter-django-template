@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.conf import settings
@@ -10,6 +11,9 @@ from django.views import defaults as error_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    # Custom urls
+    # url(r'', include(module_urls, namespace='module')),
 ]
 
 if settings.DEBUG:
