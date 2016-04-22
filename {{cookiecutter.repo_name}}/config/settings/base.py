@@ -25,7 +25,6 @@ DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -50,8 +49,6 @@ INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = (
     # Make sure djangosecure.middleware.SecurityMiddleware is listed first
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.locale.LocaleMiddleware',
-    'mozart.core.middlewares.FixedLocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,8 +73,6 @@ FIXTURE_DIRS = (
 TIME_ZONE = 'America/Mexico_City'
 
 LANGUAGE_CODE = 'en-us'
-
-SITE_ID = 1
 
 USE_I18N = True
 
@@ -130,3 +125,14 @@ AUTHENTICATION_BACKENDS = (
 SUIT_CONFIG = {
     'ADMIN_NAME': '{{cookiecutter.repo_name}}',
 }
+
+# STATIC CONFIGURATION
+# -----------------------------------------------------------------------------
+STATICFILES_DIRS = (
+    str(PROJECT_DIR.path('static')),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)

@@ -7,6 +7,7 @@ Production settings
 """
 
 from .base import *
+import dj_database_url
 
 # DEBUG
 # -----------------------------------------------------------------------------
@@ -24,46 +25,24 @@ ALLOWED_HOSTS = ["*"]
 # DATABASE
 # -----------------------------------------------------------------------------
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC',
-        'NAME': '{{cookiecutter.project_name}}',
-        'USER': 'root',
-        'PASSWORD': '{{cookiecutter.project_name}}',
-        'HOST': '',
-        'PORT': '',
-    }
+    'default': dj_database_url.config()
 }
 
-# STORAGE CONFIGURATION
+# STATIC FILE CONFIGURATION
 # -----------------------------------------------------------------------------
-INSTALLED_APPS += (
-    'storages',
-)
+INSTALLED_APPS += ('storages', )
 
-# STATIC CONFIGURATION
-# -----------------------------------------------------------------------------
-
-# Amazon s3 configuration
-AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
-AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
-AWS_AUTO_CREATE_BUCKET = True
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-
-AWS_EXPIRY = 60 * 60 * 24 * 7
-
-AWS_HEADERS = {
-    'Cache-Control': six.b('max-age=%d, s-maxage=%d, must-revalidate' % (
-        AWS_EXPIRY, AWS_EXPIRY))
-}
-
-# static
-
-MEDIA_URL = "https://%s/" % env("AWS_BUCKET_URL", None)
+STATIC_URL = env("AWS_BUCKET_URL")
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+
+AWS_S3_HOST = env("AWS_S3_HOST")
 
 # MEDIA CONFIGURATION
 # -----------------------------------------------------------------------------

@@ -63,21 +63,14 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # STATIC FILE CONFIGURATION
 # -----------------------------------------------------------------------------
-STATIC_ROOT = str(PROJECT_DIR('staticfiles'))
-
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    str(PROJECT_DIR.path('static')),
-)
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
 
 # MEDIA CONFIGURATION
 # -----------------------------------------------------------------------------
 MEDIA_ROOT = str(PROJECT_DIR('media'))
 
 MEDIA_URL = '/media/'
+
+# EMAIL CONFIGURATION
+# -----------------------------------------------------------------------------
+DEFAULT_EMAIL_TO = "devsemma@gmail.com"
